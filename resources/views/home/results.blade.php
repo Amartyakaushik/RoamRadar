@@ -21,43 +21,28 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card shadow-sm">
+                <div class="card shadow mb-4">
                     <div class="card-body">
                         <h2 class="text-center mb-4">Your Travel Recommendations</h2>
                         
-                        <!-- User Input Summary -->
-                        <div class="alert alert-info mb-4">
-                            <h5 class="alert-heading">Your Travel Preferences</h5>
-                            <p class="mb-1"><strong>Budget:</strong> ${{ number_format($budget, 2) }}</p>
-                            <p class="mb-1"><strong>Travel Dates:</strong> {{ \Carbon\Carbon::parse($startDate)->format('M d, Y') }} - {{ \Carbon\Carbon::parse($endDate)->format('M d, Y') }}</p>
-                            <p class="mb-0"><strong>Selected Activities:</strong> {{ implode(', ', $activities) }}</p>
-                        </div>
-
-                        @if(count($destinations) > 0)
-                            <!-- Destinations Grid -->
-                            <div class="row g-4">
-                                @foreach($destinations as $destination)
-                                    <div class="col-md-4">
-                                        <div class="card h-100">
-                                            <img src="{{ $destination['image'] }}" class="card-img-top" alt="{{ $destination['name'] }}" style="height: 200px; object-fit: cover;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $destination['name'] }}</h5>
-                                                <p class="card-text">{{ $destination['description'] }}</p>
-                                                <p class="card-text"><small class="text-muted">Estimated Cost: ${{ number_format($destination['cost'], 2) }}</small></p>
-                                                <div class="d-flex flex-wrap gap-2">
-                                                    @foreach($destination['tags'] as $tag)
-                                                        <span class="badge bg-primary">{{ $tag }}</span>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <p><strong>Budget:</strong> ${{ number_format($budget, 2) }}</p>
+                                <p><strong>Travel Dates:</strong> {{ date('F j, Y', strtotime($startDate)) }} - {{ date('F j, Y', strtotime($endDate)) }}</p>
                             </div>
-
-                            <!-- Action Buttons -->
-                            <div class="d-flex justify-content-center gap-3 mt-4">
-                                <form action="{{ route('recommendations.pdf') }}" method="POST" class="d-inline">
+                            <div class="col-md-6">
+                                <p><strong>Selected Activities:</strong></p>
+                                <div>
+                                    @foreach($activities as $activity)
+                                        <span class="badge bg-primary me-2">{{ ucfirst($activity) }}</span>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <form action="{{ route('recommend.pdf') }}" method="POST" class="mb-3">
                                     @csrf
                                     <input type="hidden" name="budget" value="{{ $budget }}">
                                     <input type="hidden" name="start_date" value="{{ $startDate }}">
@@ -65,55 +50,68 @@
                                     @foreach($activities as $activity)
                                         <input type="hidden" name="activities[]" value="{{ $activity }}">
                                     @endforeach
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-download me-2"></i>Download PDF
+                                    <button type="submit" class="btn btn-success w-100">
+                                        <i class="bi bi-file-pdf"></i> Download PDF
                                     </button>
                                 </form>
-
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#emailModal">
-                                    <i class="fas fa-envelope me-2"></i>Send to Email
-                                </button>
                             </div>
-                        @else
-                            <div class="alert alert-warning text-center py-5">
-                                <h4 class="mb-3">❌ No destinations found matching your criteria.</h4>
-                                <p class="mb-0">Please try again with a different selection.</p>
-                                <a href="{{ route('recommend') }}" class="btn btn-primary mt-3">Try Again</a>
+                            <div class="col-md-6">
+                                <form action="{{ route('recommend.email') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="budget" value="{{ $budget }}">
+                                    <input type="hidden" name="start_date" value="{{ $startDate }}">
+                                    <input type="hidden" name="end_date" value="{{ $endDate }}">
+                                    @foreach($activities as $activity)
+                                        <input type="hidden" name="activities[]" value="{{ $activity }}">
+                                    @endforeach
+                                    <div class="input-group mb-3">
+                                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                                        <button type="submit" class="btn btn-primary">Send to Email</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mb-4">
+                            <a href="{{ url('/recommend') }}" class="btn btn-outline-primary">Modify Search</a>
+                            <a href="{{ url('/') }}" class="btn btn-outline-secondary">Back to Home</a>
+                        </div>
+                        
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
                             </div>
                         @endif
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Email Modal -->
-    <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="{{ route('recommendations.email') }}" method="POST">
-                    @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="emailModalLabel">Send Recommendations to Email</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <input type="hidden" name="budget" value="{{ $budget }}">
-                        <input type="hidden" name="start_date" value="{{ $startDate }}">
-                        <input type="hidden" name="end_date" value="{{ $endDate }}">
-                        @foreach($activities as $activity)
-                            <input type="hidden" name="activities[]" value="{{ $activity }}">
+                
+                @if(count($destinations) > 0)
+                    <div class="row">
+                        @foreach($destinations as $destination)
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 shadow-sm">
+                                    <img src="{{ $destination['image'] }}" class="card-img-top" alt="{{ $destination['name'] }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $destination['name'] }}</h5>
+                                        <p class="card-text">{{ $destination['description'] }}</p>
+                                        <p class="card-text"><strong>Estimated Cost:</strong> ${{ number_format($destination['cost'], 2) }}</p>
+                                        
+                                        <div class="mb-3">
+                                            @foreach($destination['tags'] as $tag)
+                                                <span class="badge bg-info tag-badge">{{ ucfirst($tag) }}</span>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Send Email</button>
+                @else
+                    <div class="alert alert-info">
+                        <h4 class="alert-heading">No destinations found</h4>
+                        <p>We couldn't find any destinations matching your criteria. Try adjusting your budget or selecting different activities.</p>
                     </div>
-                </form>
+                @endif
             </div>
         </div>
     </div>
