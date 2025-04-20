@@ -105,16 +105,58 @@ class HomeController extends Controller
         // Mock destinations based on budget and activities
         $destinations = $this->getMockDestinations($budget, $activities);
 
-        // Send email
-        Mail::to($email)->send(new TravelRecommendations(
-            $destinations,
-            $budget,
-            $startDate,
-            $endDate,
-            $activities
-        ));
+        try {
+            // Send email
+            Mail::to($email)->send(new TravelRecommendations(
+                $destinations,
+                $budget,
+                $startDate,
+                $endDate,
+                $activities
+            ));
 
-        return redirect()->back()->with('success', 'Recommendations have been sent to your email!');
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Recommendations have been sent to your email!'
+                ]);
+            }
+
+            return redirect()->back()->with('success', 'Recommendations have been sent to your email!');
+        } catch (\Exception $e) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to send email. Please try again.'
+                ], 500);
+            }
+
+            return redirect()->back()->with('error', 'Failed to send email. Please try again.');
+        }
+    }
+
+    public function contact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string'
+        ]);
+
+        try {
+            // Here you would typically send an email or store the message
+            // For now, we'll just return a success response
+            return response()->json([
+                'success' => true,
+                'message' => 'Thank you for your message! We will get back to you soon.'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, there was an error sending your message. Please try again later.'
+            ], 500);
+        }
     }
 
     private function getMockDestinations($budget, $activities)
@@ -123,42 +165,42 @@ class HomeController extends Controller
         $allDestinations = [
             [
                 'name' => 'Bali, Indonesia',
-                'image' => 'https://images.unsplash.com/photo-1537995904922-cc041dde977d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'image' => 'https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg',
                 'description' => 'Tropical paradise with beautiful beaches, rich culture, and affordable luxury.',
                 'cost' => 1500,
                 'tags' => ['beach', 'nature', 'food']
             ],
             [
                 'name' => 'Barcelona, Spain',
-                'image' => 'https://images.unsplash.com/photo-1583422409516-2895a77efded?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'image' => 'https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg',
                 'description' => 'Vibrant city with stunning architecture, beaches, and world-class cuisine.',
                 'cost' => 2000,
                 'tags' => ['beach', 'museums', 'nightlife', 'food']
             ],
             [
                 'name' => 'Swiss Alps',
-                'image' => 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'image' => 'https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg',
                 'description' => 'Breathtaking mountain landscapes perfect for adventure and nature lovers.',
                 'cost' => 3000,
                 'tags' => ['adventure', 'nature']
             ],
             [
                 'name' => 'Tokyo, Japan',
-                'image' => 'https://images.unsplash.com/photo-1540959733332-eab4e40140cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'image' => 'https://images.pexels.com/photos/3408350/pexels-photo-3408350.jpeg',
                 'description' => 'Fascinating blend of ultra-modern and traditional culture.',
                 'cost' => 2500,
                 'tags' => ['museums', 'food', 'nightlife']
             ],
             [
                 'name' => 'Costa Rica',
-                'image' => 'https://images.unsplash.com/photo-1544989164-31dc8c27b5f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'image' => 'https://images.pexels.com/photos/3601094/pexels-photo-3601094.jpeg',
                 'description' => 'Eco-friendly paradise with rainforests, beaches, and adventure activities.',
                 'cost' => 1800,
                 'tags' => ['adventure', 'nature', 'beach']
             ],
             [
                 'name' => 'New York City, USA',
-                'image' => 'https://images.unsplash.com/photo-1522083165195-3424ed129620?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'image' => 'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg',
                 'description' => 'The city that never sleeps, offering museums, nightlife, and diverse food scene.',
                 'cost' => 2200,
                 'tags' => ['museums', 'nightlife', 'food']
