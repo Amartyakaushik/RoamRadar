@@ -667,8 +667,73 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-                opacity: 0.5;
+                background-image: 
+                    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+                background-size: 100% 100%, 100% 100%, 100px 100px;
+                opacity: 0.7;
+                animation: ctaBackgroundShift 15s ease-in-out infinite alternate;
+                z-index: 1;
+            }
+
+            .cta-section::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            @keyframes ctaBackgroundShift {
+                0% {
+                    background-position: 0% 0%, 0% 0%, 0 0;
+                }
+                100% {
+                    background-position: 10% 10%, -10% -10%, 50px 50px;
+                }
+            }
+
+            .cta-button {
+                background: white;
+                color: #4f46e5;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+                z-index: 3;
+            }
+
+            .cta-button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+                z-index: -1;
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover::before {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             }
 
             .footer {
@@ -1003,6 +1068,33 @@
             .form-group.error textarea {
                 @apply border-red-500 focus:border-red-500 focus:ring-red-200;
             }
+
+            @keyframes blob {
+                0% {
+                    transform: translate(0px, 0px) scale(1);
+                }
+                33% {
+                    transform: translate(30px, -50px) scale(1.1);
+                }
+                66% {
+                    transform: translate(-20px, 20px) scale(0.9);
+                }
+                100% {
+                    transform: translate(0px, 0px) scale(1);
+                }
+            }
+            
+            .animate-blob {
+                animation: blob 7s infinite;
+            }
+            
+            .animation-delay-2000 {
+                animation-delay: 2s;
+            }
+            
+            .animation-delay-4000 {
+                animation-delay: 4s;
+            }
         </style>
     </head>
     <body>
@@ -1212,13 +1304,37 @@
         </div>
 
         <!-- CTA Section -->
-        <div class="cta-section">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-8">Ready to start your journey?</h2>
-                <p class="text-xl mb-12">Start planning your next adventure today.</p>
-                <a href="/recommend" class="cta-button">
-                    <i class="fas fa-rocket mr-2"></i> Plan Your Trip
-                </a>
+        <div class="cta-section relative">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+                <div class="hero-particles" id="cta-particles-js"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+                <div class="cta-content-wrapper py-20">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 transform transition-all duration-500 hover:scale-105">
+                        <span class="inline-block relative text-white">
+                            Ready to start 
+                            <div class="absolute bottom-0 left-0 w-full h-1 bg-white opacity-50 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
+                        </span>
+                        <span class="inline-block relative text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200">
+                            your journey?
+                            <div class="absolute bottom-0 left-0 w-full h-1 bg-white opacity-50 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
+                        </span>
+                    </h2>
+                    <p class="text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl mx-auto transform transition-all duration-500 hover:scale-105">
+                        Start planning your next adventure today.
+                    </p>
+                    <div class="inline-block relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <a href="/recommend" class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg leading-none hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
+                            <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300"></span>
+                            <i class="fas fa-paper-plane mr-3 transform group-hover:rotate-12 transition-transform duration-300"></i>
+                            Plan Your Trip
+                            <div class="absolute top-0 right-0 -mt-3 -mr-6 w-32 h-32 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob"></div>
+                            <div class="absolute bottom-0 left-0 -mb-3 -ml-6 w-32 h-32 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-2000"></div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1896,6 +2012,71 @@
                         retina_detect: true
                     });
                 });
+            });
+
+            // Initialize particles for CTA section
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof particlesJS !== 'undefined') {
+                    particlesJS('cta-particles-js', {
+                        particles: {
+                            number: {
+                                value: 80,
+                                density: {
+                                    enable: true,
+                                    value_area: 800
+                                }
+                            },
+                            color: {
+                                value: '#ffffff'
+                            },
+                            shape: {
+                                type: 'circle'
+                            },
+                            opacity: {
+                                value: 0.5,
+                                random: false,
+                                anim: {
+                                    enable: false
+                                }
+                            },
+                            size: {
+                                value: 3,
+                                random: true
+                            },
+                            line_linked: {
+                                enable: true,
+                                distance: 150,
+                                color: '#ffffff',
+                                opacity: 0.4,
+                                width: 1
+                            },
+                            move: {
+                                enable: true,
+                                speed: 2,
+                                direction: 'none',
+                                random: false,
+                                straight: false,
+                                out_mode: 'out',
+                                bounce: false
+                            }
+                        },
+                        interactivity: {
+                            detect_on: 'canvas',
+                            events: {
+                                onhover: {
+                                    enable: true,
+                                    mode: 'grab'
+                                },
+                                onclick: {
+                                    enable: true,
+                                    mode: 'push'
+                                },
+                                resize: true
+                            }
+                        },
+                        retina_detect: true
+                    });
+                }
             });
         </script>
     </body>
