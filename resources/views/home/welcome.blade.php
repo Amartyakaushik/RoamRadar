@@ -190,8 +190,12 @@
             }
 
             .nav-link:hover {
-                color: #6366f1;
+                color: #ffffff;
                 transform: translateY(-2px);
+            }
+
+            .nav-link:hover .nav-link-icon {
+                color: #ffffff;
             }
 
             .nav-link::before {
@@ -225,6 +229,12 @@
                 z-index: 1;
                 display: flex;
                 align-items: center;
+            }
+
+            .register-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+                background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             }
 
             .button-content {
@@ -262,6 +272,7 @@
             .register-button:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+                background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             }
 
             @keyframes gradientShift {
@@ -438,6 +449,8 @@
                 opacity: 0;
                 transform: translateY(20px);
                 animation: fadeInUp 0.8s ease forwards 0.9s;
+                color: rgba(255, 255, 255, 0.9);
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             }
 
             .hero-buttons {
@@ -526,6 +539,7 @@
             .stat-label {
                 color: rgba(255, 255, 255, 0.8);
                 font-size: 0.875rem;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             }
 
             .hero-scroll-indicator {
@@ -1095,6 +1109,21 @@
             .animation-delay-4000 {
                 animation-delay: 4s;
             }
+
+            @keyframes tilt {
+                0%, 100% {
+                    transform: rotate(0deg);
+                }
+                25% {
+                    transform: rotate(1deg);
+                }
+                75% {
+                    transform: rotate(-1deg);
+                }
+            }
+            .animate-tilt {
+                animation: tilt 10s infinite linear;
+            }
         </style>
     </head>
     <body>
@@ -1339,57 +1368,155 @@
         </div>
 
         <!-- Footer -->
-        <footer class="footer">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div>
-                        <div class="footer-logo">RoamRadar</div>
-                        <p class="text-gray-400 mb-4">Your ultimate travel companion for discovering new destinations and creating unforgettable memories.</p>
-                        <div class="flex">
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-facebook-f"></i>
+        <footer class="relative overflow-hidden bg-gradient-to-b from-indigo-900 to-[#1e1b4b]">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600"></div>
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f46e515_1px,transparent_1px),linear-gradient(to_bottom,#4f46e515_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-indigo-900 to-transparent"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-12">
+                <!-- Main footer content -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                    <!-- Brand section -->
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="relative group">
+                                <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                                <div class="relative">
+                                    <h3 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400">
+                                        RoamRadar
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Discover your next adventure with RoamRadar. We help you find the perfect destination based on your preferences and create unforgettable travel experiences.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="group">
+                                <div class="relative p-2 bg-white/5 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
+                                    <i class="fab fa-facebook-f text-gray-400 group-hover:text-purple-400 transition-colors"></i>
+                                </div>
                             </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-twitter"></i>
+                            <a href="#" class="group">
+                                <div class="relative p-2 bg-white/5 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
+                                    <i class="fab fa-twitter text-gray-400 group-hover:text-purple-400 transition-colors"></i>
+                                </div>
                             </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-instagram"></i>
+                            <a href="#" class="group">
+                                <div class="relative p-2 bg-white/5 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
+                                    <i class="fab fa-instagram text-gray-400 group-hover:text-purple-400 transition-colors"></i>
+                                </div>
                             </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-linkedin-in"></i>
+                            <a href="#" class="group">
+                                <div class="relative p-2 bg-white/5 rounded-lg transition-all duration-300 group-hover:bg-white/10 group-hover:scale-110">
+                                    <i class="fab fa-linkedin-in text-gray-400 group-hover:text-purple-400 transition-colors"></i>
+                                </div>
                             </a>
                         </div>
                     </div>
+
+                    <!-- Quick Links -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                        <ul>
-                            <li><a href="/" class="footer-link">Home</a></li>
-                            <li><a href="/recommend" class="footer-link">Recommend</a></li>
-                            <li><a href="#features" class="footer-link">Features</a></li>
-                            <li><a href="#contact" class="footer-link">Contact</a></li>
+                        <h4 class="text-white font-semibold mb-6 relative inline-block">
+                            Quick Links
+                            <div class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-gradient-to-r from-purple-600 to-transparent"></div>
+                        </h4>
+                        <ul class="space-y-4">
+                            <li>
+                                <a href="/" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/recommend" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Recommend
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#features" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Features
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Contact
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
+                    <!-- Popular Destinations -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Destinations</h3>
-                        <ul>
-                            <li><a href="#" class="footer-link">Popular Places</a></li>
-                            <li><a href="#" class="footer-link">Adventure Tours</a></li>
-                            <li><a href="#" class="footer-link">Beach Getaways</a></li>
-                            <li><a href="#" class="footer-link">City Breaks</a></li>
+                        <h4 class="text-white font-semibold mb-6 relative inline-block">
+                            Popular Destinations
+                            <div class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-gradient-to-r from-purple-600 to-transparent"></div>
+                        </h4>
+                        <ul class="space-y-4">
+                            <li>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Beach Getaways
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Mountain Adventures
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    City Breaks
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group">
+                                    <span class="w-2 h-2 bg-purple-600 rounded-full mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
+                                    Cultural Tours
+                                </a>
+                            </li>
                         </ul>
                     </div>
+
+                    <!-- Newsletter -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Support</h3>
-                        <ul>
-                            <li><a href="#" class="footer-link">Help Center</a></li>
-                            <li><a href="#" class="footer-link">Terms of Service</a></li>
-                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
-                            <li><a href="#" class="footer-link">FAQs</a></li>
-                        </ul>
+                        <h4 class="text-white font-semibold mb-6 relative inline-block">
+                            Stay Updated
+                            <div class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-gradient-to-r from-purple-600 to-transparent"></div>
+                        </h4>
+                        <p class="text-gray-400 text-sm mb-4">Subscribe to our newsletter for travel tips and exclusive offers.</p>
+                        <form class="space-y-3">
+                            <div class="relative group">
+                                <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                                <input type="email" placeholder="Your email address" class="relative w-full px-4 py-2 bg-black/20 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 text-gray-300 placeholder-gray-500">
+                            </div>
+                            <button type="submit" class="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5">
+                                Subscribe
+                            </button>
+                        </form>
                     </div>
                 </div>
-                <div class="copyright">
-                    <p>&copy; {{ date('Y') }} RoamRadar. All rights reserved.</p>
+
+                <!-- Bottom bar -->
+                <div class="pt-8 mt-12 border-t border-white/10">
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <p class="text-gray-400 text-sm">
+                            © {{ date('Y') }} RoamRadar. All rights reserved.
+                        </p>
+                        <div class="flex space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
+                            <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>
+                            <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Cookie Policy</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
